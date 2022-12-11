@@ -20,7 +20,7 @@ export class AlertService {
     this._snackBar.open(message, '', {
       duration: 7500,
       verticalPosition: 'top',
-      panelClass: ['mat-toolbar', 'mat-warn'],
+      panelClass:['mat-toolbar', 'mat-warn'],
     });
   }
 }
