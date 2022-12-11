@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+<div [ngClass]="{'pe-none': loading}" >
+    <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="loading" class="waiting-container">
+    <mat-spinner></mat-spinner>
+</div>

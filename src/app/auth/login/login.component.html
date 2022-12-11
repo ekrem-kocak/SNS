@@ -1,13 +1,12 @@
-<form [formGroup]="loginForm">
+<form [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="p-4">
 
         <h2 class="fw-bold mb-3 text-center">LOGIN</h2>
 
         <div class="example-container">
             <mat-form-field appearance="fill" class="w-100">
-                <mat-label>Username</mat-label>
-                <input matInput type="text" formControlName="username" required>
-                <!-- <mat-error *ngIf="username?.invalid">{{getErrorMessage()}}</mat-error> -->
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email" required>
             </mat-form-field>
         </div>
 
@@ -15,19 +14,15 @@
             <mat-form-field appearance="fill" class="w-100">
                 <mat-label>Password</mat-label>
                 <input matInput type="password" formControlName="password" required>
-                <!-- <mat-error *ngIf="username?.invalid">{{getErrorMessage()}}</mat-error> -->
             </mat-form-field>
         </div>
 
-
-
-
         <div class="d-flex flex-column ">
-            <button mat-raised-button color="primary" class="mb-2">Login</button>
-            <button mat-raised-button color="accent" class="mb-2" routerLink="/register">Register</button>
+            <button mat-raised-button color="primary" class="mb-2" type="submit">Login</button>
+            <button mat-raised-button color="accent" class="mb-2" routerLink="register">Register</button>
             <span>
                 Forgot your password?
-                <a style="color: #333;" routerLink="/reset-password">Reset Password</a>
+                <a style="color: #333;" routerLink="reset-password">Reset Password</a>
             </span>
         </div>
 
