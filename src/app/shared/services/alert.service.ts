@@ -12,6 +12,7 @@ export class AlertService {
     this._snackBar.open(message, '', {
       duration: 7500,
       verticalPosition: 'top',
+      panelClass: ['mat-toolbar', 'mat-primary'],
     });
   }
 
@@ -19,6 +20,7 @@ export class AlertService {
     this._snackBar.open(message, '', {
       duration: 7500,
       verticalPosition: 'top',
+      panelClass: ['mat-toolbar', 'mat-warn'],
     });
   }
 }

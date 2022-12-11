@@ -78,5 +78,6 @@ export class AuthService {
     this.user.next(user);
 
     localStorage.setItem('user', JSON.stringify(user));
+    this.router.navigate(["/"])
   }
 }
