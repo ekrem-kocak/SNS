@@ -24,14 +24,16 @@ export class RegisterComponent {
   get repassword() { return this.registerForm.get('repassword') }
 
   register() {
-    if(this.password?.value != this.repassword?.value){
+    if (this.password?.value != this.repassword?.value) {
       this.alertService.error('Passwords do not match!')
       return
     }
 
     this.stateService.setLoading(true);
     this.authService.signUp(this.email?.value, this.password?.value).subscribe({
-      next: (res) => console.log(res),
+      next: (res) => {
+        this.authService.login(res.email, this.password?.value).subscribe();
+      },
       error: (err) => {
         this.alertService.error(err)
         this.stateService.setLoading(false);

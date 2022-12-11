@@ -13,3 +13,7 @@ body {
     font-family: "Lato";
     src: local("Lato"), url(./assets/fonts/Lato/Lato-Regular.ttf) format("truetype");
 }
+
+.mdc-snackbar__surface{
+    background-color: transparent !important;
+}
