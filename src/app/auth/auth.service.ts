@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { UserService } from '../shared/services/user.service';
 import { AuthResponse } from './models/AuthResponse';
 import { User } from './models/User';
+import { UserDto } from './models/UserDto';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +17,29 @@ export class AuthService {
 
   user = new BehaviorSubject<User | null>(null);
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private userService: UserService, private router: Router) { }
 
   signUp(email: string, password: string): Observable<AuthResponse> {
     return this.http.post<AuthResponse>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + this.api_key, {
       email,
       password,
       returnSecureToken: true
-    })
+    }).pipe(
+      tap(user => {
+        let newUser: UserDto = {
+          localId: user.localId,
+          university: '',
+          email: user.email,
+          description: '',
+          department: '',
+          name: '',
+          photoUrl: '',
+          verified: false
+        }
+
+        this.userService.newUser(newUser).subscribe();
+      })
+    )
   }
 
   login(email: string, password: string): Observable<AuthResponse> {
@@ -78,6 +95,11 @@ export class AuthService {
     this.user.next(user);
 
     localStorage.setItem('user', JSON.stringify(user));
+
+    this.userService.getUserById(userId).subscribe(user => {
+      localStorage.setItem('verified', JSON.stringify(user.verified))
+    })
+
     this.router.navigate(["/"])
   }
 }
