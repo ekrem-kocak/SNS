@@ -21,6 +21,12 @@ export class AuthGuard implements CanActivate {
       tap(isAuth => {
         if (!isAuth) {
           this.router.navigate(["/auth"])
+        }else{
+          let verified = JSON.parse(localStorage.getItem('verified')!)
+
+          if(!verified){
+            this.router.navigate(["/auth/registration-steps"])
+          }
         }
       })
     )

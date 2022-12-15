@@ -8,6 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../shared/material.module';
 import { AuthComponent } from './auth.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { RegistrationStepsComponent } from './registration-steps/registration-steps.component';
+import { UploadComponent } from '../shared/components/upload/upload.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     AuthComponent,
     LoginComponent,
     RegisterComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    RegistrationStepsComponent,
+    UploadComponent
   ],
   imports: [
     CommonModule,
