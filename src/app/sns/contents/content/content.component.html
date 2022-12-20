@@ -1,21 +1,21 @@
 <mat-card class="example-card">
-    <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-        <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-        </p>
-    </mat-card-content>
-    <mat-card-actions class="d-flex justify-content-between" style="padding: 8px 16px;">
-        <button mat-raised-button color="primary">
-            <i class="bi bi-hand-thumbs-up fs-5"></i>
+    <mat-card-header class="mb-2">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon" class="fs-4">
+            {{getContentHeader(content?.userDto?.name!)}}
         </button>
-        <button mat-button><i class="bi bi-save fs-5"></i></button>
-    </mat-card-actions>
+    </mat-card-header>
+    <hr>
+
+    <mat-card-content class="mb-3">
+        <mat-chip-listbox>
+            <mat-chip> {{content?.department}}</mat-chip>
+            <mat-chip> {{content?.lesson}}</mat-chip>
+            <mat-chip> {{content?.class}}.Class</mat-chip>
+        </mat-chip-listbox>
+    </mat-card-content>
+
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+        <p style="word-wrap: break-word;" [innerHTML]="content?.description"></p>
+    </mat-card-content>
 </mat-card>

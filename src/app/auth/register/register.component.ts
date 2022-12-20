@@ -47,7 +47,9 @@ export class RegisterComponent {
         }
 
         this.userService.newUser(newUser).subscribe(res=>{
-          this.authService.login(user.email, this.password?.value).subscribe();
+          this.authService.login(user.email, this.password?.value).subscribe(res=>{
+            this.stateService.setLoading(false)
+          });
         });
        
       },
