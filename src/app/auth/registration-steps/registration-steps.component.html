@@ -82,7 +82,7 @@
       </form>
     </mat-step>
 
-    <mat-step [stepControl]="photoUrlFG" [optional]="true">
+    <!-- <mat-step [stepControl]="photoUrlFG" [optional]="true">
       <form class="example-form" [formGroup]="photoUrlFG">
         <ng-template matStepLabel>Upload your profile photo.</ng-template>
         <div class="mt-2">
@@ -92,14 +92,14 @@
           <img [src]="profilePhotoPath" alt="profile-picture" style="width: 80%;">
         </div>
       </form>
-    </mat-step>
+    </mat-step> -->
 
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
       <p>You are now done.</p>
       <div>
         <button mat-raised-button color="accent" class="me-2" matStepperPrevious>Back</button>
-        <button mat-raised-button color="primary" (click)="updateUser()">Reset</button>
+        <button mat-raised-button color="primary" (click)="updateUser()">Finish</button>
       </div>
     </mat-step>
 
