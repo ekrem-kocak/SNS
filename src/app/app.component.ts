@@ -47,4 +47,8 @@ export class AppComponent implements OnInit {
     this.stateService.darkMode.next(darkMode);
     localStorage.setItem('darkMode', JSON.stringify(darkMode));
   }
+
+  logout(){
+    
+  }
 }

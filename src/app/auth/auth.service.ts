@@ -41,8 +41,9 @@ export class AuthService {
 
   autoLogin() {
     const user = JSON.parse(localStorage.getItem('user')!)
+    const localId = JSON.parse(localStorage.getItem('localId')!)
 
-    if (!user)
+    if (!user || !localId)
       return;
 
     const loadedUser = new User(
@@ -53,6 +54,9 @@ export class AuthService {
     );
 
     this.user.next(loadedUser)
+    this.userService.getUserById(localId).subscribe(userDto=>{
+      this.userService.user.next(userDto!);
+    })
   }
 
   logout() {
