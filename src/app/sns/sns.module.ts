@@ -8,6 +8,7 @@ import { MaterialModule } from '../shared/material.module';
 import { NewContentComponent } from './new-content/new-content.component';
 import { ContentsComponent } from './contents/contents.component';
 import { ContentComponent } from './contents/content/content.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ContentComponent } from './contents/content/content.component';
     SnsComponent,
     NewContentComponent,
     ContentsComponent,
-    ContentComponent
+    ContentComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
