@@ -24,22 +24,7 @@ export class AuthService {
       email,
       password,
       returnSecureToken: true
-    }).pipe(
-      tap(user => {
-        let newUser: UserDto = {
-          localId: user.localId,
-          university: '',
-          email: user.email,
-          description: '',
-          department: '',
-          name: '',
-          photoUrl: '',
-          verified: false
-        }
-
-        this.userService.newUser(newUser).subscribe();
-      })
-    )
+    })
   }
 
   login(email: string, password: string): Observable<AuthResponse> {
@@ -72,6 +57,7 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('user');
+    localStorage.removeItem('verified');
     this.user.next(null);
     this.router.navigate(["/auth"]);
   }
@@ -95,11 +81,17 @@ export class AuthService {
     this.user.next(user);
 
     localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('localId', JSON.stringify(userId))
 
-    this.userService.getUserById(userId).subscribe(user => {
-      localStorage.setItem('verified', JSON.stringify(user.verified))
+    this.userService.getUserById(userId).subscribe(userDto => {
+      if (userDto) {
+        this.userService.user.next(userDto);
+        localStorage.setItem('verified', JSON.stringify(userDto.verified))
+        this.router.navigate(["/"])
+      } else {
+        // err
+      }
     })
 
-    this.router.navigate(["/"])
   }
 }

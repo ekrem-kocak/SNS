@@ -18,7 +18,6 @@ export class UploadComponent {
   }
 
   uploadFile = (files: any) => {
-    console.log("girdi");
     if (files.length === 0) {
       return;
     }
@@ -37,7 +36,6 @@ export class UploadComponent {
             this.onUploadFinished.emit(event.body);
           }
         },
-        error: (err: HttpErrorResponse) => console.log(err)
       });
   }
 }

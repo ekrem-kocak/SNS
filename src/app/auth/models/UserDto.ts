@@ -1,10 +1,12 @@
-export interface UserDto{
-    name:string
-    university: string
-    department: string
-    description: string
-    photoUrl: string
-    email: string
-    localId: string
+export interface UserDto {
+    id?: string | null
+    name: string | null
+    university: string | null
+    department: string | null
+    description: string | null
+    class: number | null
+    photoUrl?: string | null
+    email: string | null
+    localId: string | null
     verified: boolean
 }
