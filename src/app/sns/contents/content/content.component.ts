@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Content } from '../../Content';
 
 @Component({
   selector: 'content',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent {
+  @Input() content: Content | null = null;
 
+  getContentHeader(name: string): string {
+    return name.slice(0, 1).toUpperCase();
+  }
 }
