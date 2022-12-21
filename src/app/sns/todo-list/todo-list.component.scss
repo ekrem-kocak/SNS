@@ -1,13 +1,28 @@
+.todo-cc{
+  @media screen and (max-width: 1200px) {
+    margin: 0 auto;
+    width: 40%;
+  }
+
+  @media screen and (max-width: 992px) {
+    width: 60%;
+  }
+
+  @media screen and (max-width: 576px) {
+    width: 90%;
+  }
+}
+
 .todo-list {
   // background: #FFF; 
-  font-size: 20px;
+  font-size: 14px;
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
 }
 
 .todo {
   display: block;
   position: relative;
-  padding: 1em 1em 1em 16%;
+  padding: 1.2em 1.2em 1.2em 16%;
   margin: 0 auto;
   cursor: pointer; 
   border-bottom: solid 1px #ddd;
