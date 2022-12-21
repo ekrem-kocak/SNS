@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { AuthService } from 'src/app/auth/auth.service';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { StateService } from 'src/app/shared/services/state.service';
@@ -13,6 +14,49 @@ import { ContentService } from '../content.service';
   styleUrls: ['./new-content.component.scss']
 })
 export class NewContentComponent {
+
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: 'auto',
+    minHeight: '0',
+    maxHeight: 'auto',
+    width: 'auto',
+    minWidth: '0',
+    translate: 'yes',
+    enableToolbar: true,
+    showToolbar: true,
+    placeholder: 'Enter text here...',
+    defaultParagraphSeparator: '',
+    defaultFontName: '',
+    defaultFontSize: '',
+    fonts: [
+      { class: 'arial', name: 'Arial' },
+      { class: 'times-new-roman', name: 'Times New Roman' },
+      { class: 'calibri', name: 'Calibri' },
+      { class: 'comic-sans-ms', name: 'Comic Sans MS' }
+    ],
+    customClasses: [
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ],
+    toolbarHiddenButtons: [
+      ['bold', 'italic'],
+      ['fontSize','insertImage',
+      'insertVideo',]
+    ]
+  };
 
   contentForm = new FormGroup({
     department: new FormControl('', Validators.required),
@@ -28,7 +72,7 @@ export class NewContentComponent {
   }
 
   createContent() {
-    if(this.contentForm.invalid){
+    if (this.contentForm.invalid) {
       return
     }
     this.stateService.setLoading(true);

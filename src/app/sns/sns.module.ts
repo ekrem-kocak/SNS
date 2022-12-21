@@ -9,6 +9,7 @@ import { NewContentComponent } from './new-content/new-content.component';
 import { ContentsComponent } from './contents/contents.component';
 import { ContentComponent } from './contents/content/content.component';
 import { ProfileComponent } from './profile/profile.component';
+import { TodoListComponent } from './todo-list/todo-list.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ProfileComponent } from './profile/profile.component';
     NewContentComponent,
     ContentsComponent,
     ContentComponent,
-    ProfileComponent
+    ProfileComponent,
+    TodoListComponent
   ],
   imports: [
     CommonModule,

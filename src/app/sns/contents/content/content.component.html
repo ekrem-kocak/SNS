@@ -16,8 +16,6 @@
 
     <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
     <mat-card-content>
-        <p>
-            {{content?.description}}
-        </p>
+        <p style="word-wrap: break-word;" [innerHTML]="content?.description"></p>
     </mat-card-content>
 </mat-card>

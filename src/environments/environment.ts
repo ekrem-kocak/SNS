@@ -1,11 +1,11 @@
 export const environment = {
     firebaseConfig: {
-        apiKey: "AIzaSyDf9i3FCqWh3vxxMZ9-9txMKGykAYsX0oQ",
-        authDomain: "studentsnotesharing.firebaseapp.com",
-        databaseURL: "https://studentsnotesharing-default-rtdb.firebaseio.com",
-        projectId: "studentsnotesharing",
-        storageBucket: "studentsnotesharing.appspot.com",
-        messagingSenderId: "247850961256",
-        appId: "1:247850961256:web:48adfad34a17bd037faedd"
+        apiKey: "AIzaSyCN4sL6zQja1WM4AAbAt6Oeb9lNtIz-w0M",
+        authDomain: "sns-software.firebaseapp.com",
+        databaseURL: "https://sns-software-default-rtdb.firebaseio.com",
+        projectId: "sns-software",
+        storageBucket: "sns-software.appspot.com",
+        messagingSenderId: "893978401557",
+        appId: "1:893978401557:web:2a38c460bf00c5cf42271c"
     }
 }

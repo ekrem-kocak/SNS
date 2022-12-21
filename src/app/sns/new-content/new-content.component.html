@@ -22,10 +22,13 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width w-100">
-            <mat-label>Leave a comment</mat-label>
-            <textarea matInput formControlName="description" placeholder="Try adding a text, video link or image, pdf description."></textarea>
-        </mat-form-field>
+        <!-- <mat-form-field class="example-full-width w-100"> -->
+            <!-- <mat-label>Leave a comment</mat-label> -->
+        <div class="mb-2">
+            <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
+        </div>
+            <!-- <textarea matInput formControlName="description" placeholder="Try adding a text, video link or image, pdf description."></textarea> -->
+        <!-- </mat-form-field> -->
 
         <!-- <div class="mb-2">
             <button mat-raised-button color="accent" class=" me-2">

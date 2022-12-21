@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Content } from './Content';
 
@@ -19,7 +19,13 @@ export class ContentService {
   }
 
   createContent(content: Content): Observable<Content> {
-    return this.http.post<Content>(environment.firebaseConfig.databaseURL + '/contents.json', content);
+    return this.http.post<Content>(environment.firebaseConfig.databaseURL + '/contents.json', content).pipe(
+      tap(c=>{
+        let _contents = this.allContents.getValue();
+        _contents.push(content);
+        this.allContents.next(_contents);
+      })
+    );
   }
 
   getContents(): Observable<Content[]> {
