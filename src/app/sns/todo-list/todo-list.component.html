@@ -19,13 +19,13 @@
 </svg>
 
 
-<mat-card>
+<mat-card class="todo-cc">
     <form [formGroup]="todoForm" (ngSubmit)="addTodo()">
         <h4 class="fw-bold text-center my-2">{{user?.name}}'s Todo List</h4>
 
         <div class="input-group mb-3 px-2">
             <input formControlName="todo" type="text" class="form-control" placeholder="New Todo">
-            <button mat-button type="submit">
+            <button mat-raised-button color="primary" type="submit">
                 <i class="bi bi-plus-lg"></i>
             </button>
         </div>

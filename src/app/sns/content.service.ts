@@ -20,7 +20,7 @@ export class ContentService {
 
   createContent(content: Content): Observable<Content> {
     return this.http.post<Content>(environment.firebaseConfig.databaseURL + '/contents.json', content).pipe(
-      tap(c=>{
+      tap(c => {
         let _contents = this.allContents.getValue();
         _contents.push(content);
         this.allContents.next(_contents);
@@ -35,10 +35,19 @@ export class ContentService {
 
         for (let key in contents) {
           console.log(contents[key]);
-          newContents.push({ ...contents[key]})
+          newContents.push({ ...contents[key], id: key })
         }
 
         return newContents;
+      })
+    );
+  }
+
+  deleteContent(content: Content): Observable<Content> {
+    return this.http.delete<Content>(environment.firebaseConfig.databaseURL + '/contents/' + content.id + '.json').pipe(
+      tap(c => {
+        let _contents = this.allContents.getValue();
+        _contents.splice(_contents.findIndex(c => c.id == content.id),1)
       })
     );
   }
