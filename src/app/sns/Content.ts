@@ -6,5 +6,5 @@ export interface Content {
     lesson: string
     class: number
     description: string
-    userDto: UserDto
+    userLocalId: string
 }

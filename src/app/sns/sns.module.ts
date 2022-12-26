@@ -10,6 +10,7 @@ import { ContentsComponent } from './contents/contents.component';
 import { ContentComponent } from './contents/content/content.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { TodoListComponent } from './todo-list/todo-list.component';
     ContentsComponent,
     ContentComponent,
     ProfileComponent,
-    TodoListComponent
+    TodoListComponent,
+    EditProfileComponent
   ],
   imports: [
     CommonModule,

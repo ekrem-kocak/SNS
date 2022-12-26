@@ -1,17 +1,17 @@
-<mat-card class="example-card">
+<mat-card class="example-card pb-2">
     <mat-card-header class="mb-2 row">
         <div class="col-3 m-0">
-            <button mat-fab [color]="user?.localId == content?.userDto?.localId ? 'primary':'accent'" class="fs-4">
-                {{getContentHeader(content?.userDto?.name!)}}
+            <button *ngIf="contentUser" mat-fab [color]="user?.localId == contentUser.localId ? 'primary':'accent'" class="fs-4">
+                {{getContentHeader(contentUser.name!)}}
             </button>
         </div>
 
         <div class="col-9 m-0 content-user-info">
             <ul>
-                <li class="fw-bold">{{content?.userDto?.name}}</li>
-                <li>{{content?.userDto?.university}}</li>
-                <li>{{content?.userDto?.department}}</li>
-                <li>{{content?.userDto?.class}}</li>
+                <li class="fw-bold">{{contentUser?.name}}</li>
+                <li>{{contentUser?.university}}</li>
+                <li>{{contentUser?.department}}</li>
+                <li>{{contentUser?.class}}</li>
             </ul>
         </div>
     </mat-card-header>
@@ -30,7 +30,7 @@
         <p style="word-wrap: break-word;" [innerHTML]="content?.description"></p>
     </mat-card-content>
 
-    <button class="delete-content" *ngIf="user?.localId == content?.userDto?.localId" mat-raised-button color="warn"
+    <button class="delete-content" *ngIf="user?.localId == content?.userLocalId" mat-raised-button color="warn"
         matTooltip="Delete" (click)="deleteContent(content)">
         <i class="bi bi-trash"></i>
     </button>

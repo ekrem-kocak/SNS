@@ -18,6 +18,12 @@ export class ContentService {
     })
   }
 
+  fetch(){
+    this.getContents().subscribe(contents=>{
+      this.allContents.next(contents);
+    })
+  }
+
   createContent(content: Content): Observable<Content> {
     return this.http.post<Content>(environment.firebaseConfig.databaseURL + '/contents.json', content).pipe(
       tap(c => {
