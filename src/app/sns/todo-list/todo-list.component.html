@@ -31,7 +31,7 @@
         </div>
     </form>
     <mat-card>
-        <div class="todo-list">
+        <div class="todo-list" *ngIf="todos.length > 0 else noTodo">
             <label class="todo" *ngFor="let todo of todos">
                 <input (change)="updateTodo(todo,$event)" [checked]="todo.done" class="todo__state" type="checkbox" />
     
@@ -53,3 +53,9 @@
         </div>
     </mat-card>
 </mat-card>
+
+<ng-template #noTodo>
+    <h6 class="text-muted p-2" style="text-decoration: underline;">
+        Your todo list is empty. Try adding a new one
+    </h6>
+</ng-template>

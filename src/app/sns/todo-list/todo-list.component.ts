@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserDto } from 'src/app/auth/models/UserDto';
 import { AlertService } from 'src/app/shared/services/alert.service';
+import { StateService } from 'src/app/shared/services/state.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Todo } from './Todo';
 import { TodoService } from './todo.service';
@@ -21,7 +22,7 @@ export class TodoListComponent {
     todo: new FormControl('', Validators.required)
   })
 
-  constructor(private userService: UserService, private todoService: TodoService, private alertService: AlertService) {
+  constructor(private userService: UserService, private todoService: TodoService, private alertService: AlertService, private stateService: StateService) {
     this.userService.user.subscribe(user => {
       this.user = user;
 
@@ -37,6 +38,7 @@ export class TodoListComponent {
       this.alertService.error("Please enter a value");
       return
     }
+    this.stateService.setLoading(true);
     let newTodo: Todo = {
       description: this.todoForm.get('todo')?.value!,
       done: false
@@ -45,6 +47,7 @@ export class TodoListComponent {
       console.log(res);
       this.todos.push(newTodo);
       this.todoForm.reset();
+      this.stateService.setLoading(false);
     })
   }
 
@@ -56,8 +59,10 @@ export class TodoListComponent {
   }
 
   deleteTodo(todoId: string) {
+    this.stateService.setLoading(true);
     this.todoService.deleteTodo(this.user?.localId!, todoId).subscribe(res => {
       this.todos.splice(this.todos.findIndex(t => t.id == todoId), 1);
+      this.stateService.setLoading(false);
     })
   }
 }

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { AuthService } from 'src/app/auth/auth.service';
 import { AlertService } from 'src/app/shared/services/alert.service';
@@ -14,6 +14,8 @@ import { ContentService } from '../content.service';
   styleUrls: ['./new-content.component.scss']
 })
 export class NewContentComponent {
+
+  @ViewChild(FormGroupDirective) formDirective: FormGroupDirective | any;
 
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -81,13 +83,14 @@ export class NewContentComponent {
       lesson: this.contentForm.get('lesson')?.value!,
       class: +this.contentForm.get('class')?.value!,
       description: this.contentForm.get('description')?.value!,
-      userDto: this.userService.user.getValue()!
+      userLocalId: this.userService.user.getValue()?.localId!
     }
 
     this.contentService.createContent(newContent).subscribe({
       next: (content) => {
         this.alertService.success("Successful")
         this.contentForm.reset();
+        this.formDirective.resetForm();
       },
       error: (err) => {
         this.alertService.error("Err")
